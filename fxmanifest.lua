@@ -14,11 +14,7 @@ shared_scripts {
 
 client_scripts {
     '/client/client.lua',
-    '/client/npcspawn.lua',
     '/client/warmenu.lua',
     '/client/shopped.lua',
     '/client/menusetup.lua',
-    '/client/searches.lua',
-    '/client/skinned.js',
-    '/client/skinned.lua',
 }
