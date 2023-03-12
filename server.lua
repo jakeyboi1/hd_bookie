@@ -42,6 +42,8 @@ AddEventHandler('fightbegin', function(qty, fighterbeton, table) --makes the eve
         TriggerClientEvent('fightstartt', source, qty, fighterbeton, table) --triggers client event and passes variables
         Wait(table.cooldown) --waits the set time
         valcdown = false --resets cooldown so code can run again
+      elseif valcdown == true then --if it is on cooldown then
+        TriggerClientEvent('bookiecdown', source) --trigger client event that notifies its on cooldown
       end
     elseif table.location == 'bw' then
       if bwcdown == false then
@@ -49,6 +51,8 @@ AddEventHandler('fightbegin', function(qty, fighterbeton, table) --makes the eve
         TriggerClientEvent('fightstartt', source, qty, fighterbeton, table)
         Wait(table.cooldown)
         valcdown = false
+      elseif bwcdown == true then
+        TriggerClientEvent('bookiecdown', source)
       end
     elseif table.location == 'sd' then
       if sdcdwon == false then
@@ -56,6 +60,8 @@ AddEventHandler('fightbegin', function(qty, fighterbeton, table) --makes the eve
         TriggerClientEvent('fightstartt', source, qty, fighterbeton, table)
         Wait(table.cooldown)
         sdcdwon = false
+      elseif sdcdwon == true then
+        TriggerClientEvent('bookiecdown', source)
       end
     elseif table.location == 'armadillo' then
       if armadillocdown == false then
@@ -63,6 +69,8 @@ AddEventHandler('fightbegin', function(qty, fighterbeton, table) --makes the eve
         TriggerClientEvent('fightstartt', source, qty, fighterbeton, table)
         Wait(table.cooldown)
         armadillocdown = false
+      elseif armadillocdown == true then
+        TriggerClientEvent('bookiecdown', source)
       end
     elseif table.location == 'annesburg' then
       if annesburgcdown == false then
@@ -70,6 +78,8 @@ AddEventHandler('fightbegin', function(qty, fighterbeton, table) --makes the eve
         TriggerClientEvent('fightstartt', source, qty, fighterbeton, table)
         Wait(table.cooldown)
         annesburgcdown = false
+      elseif annesburgcdown == true then
+        TriggerClientEvent('bookiecdown', source)
       end
     end
   elseif Character.money < qty then --if you do not have the money then

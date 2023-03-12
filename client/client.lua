@@ -106,3 +106,8 @@ RegisterNetEvent('notenoughcash')
 AddEventHandler('notenoughcash', function()
     VORPcore.NotifyBottomRight('You do not have enough cash for the bet!', 4000)
 end)
+
+RegisterNetEvent('bookiecdown')
+AddEventHandler('bookiecdown', function()
+    VORPcore.NotifyBottomRight('You have to wait, a fight has recently occured!', 4000)
+end)
