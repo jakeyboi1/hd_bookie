@@ -1,10 +1,10 @@
 Citizen.CreateThread(function()
-    TriggerServerEvent('pedspawns')
+    TriggerServerEvent('hd_bookie:pedspawns')
 end)
 
 local pedlock = 0
-RegisterNetEvent('pedspawn')
-AddEventHandler('pedspawn', function()
+RegisterNetEvent('hd_bookie:pedspawn')
+AddEventHandler('hd_bookie:pedspawn', function()
     local model = GetHashKey('mp_re_slumpedhunter_males_01') --sets the npc model
     for k, v in pairs(Config.Setup) do
         local blip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.Bookielocation.x, v.Bookielocation.y, v.Bookielocation.z)
