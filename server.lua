@@ -1,37 +1,22 @@
--- Pulls and allows the use of VORP core
+--[[##########################Pulling Essentials##############################################]]
 local VORPcore = {}
-
 TriggerEvent("getCore", function(core)
   VORPcore = core
 end)
---end of pulling vorpcore
 
---This keeps the shop ped from spawning multiple times
-local shoppedspawn = 0 --creates a variable that is set to 0 on server start
-RegisterServerEvent('hd_bookie:pedspawns') --registers a server event
-AddEventHandler('hd_bookie:pedspawns', function() --makes the server event have some code to run
-  for k, v in pairs(Config.Setup) do --for the amount of table in the config repeat(runs this code once per table in config)
-    if shoppedspawn == 0 then --if the variable is 0 then meaning if code hasnt been run already
-      TriggerClientEvent('hd_bookie:pedspawn', source) --triggers the client event that spawns the ped
-    end
-  end
-  shoppedspawn = shoppedspawn + 1 --sets the variable to 1 so this event cant run again until script or server restart
-end)
-
---This part of the code catches the information from the players bet amount
+--[[################Variable reciever############################]]
 RegisterServerEvent('hd_bookie:bookiecatchinputforsell') --creates server event
 AddEventHandler('hd_bookie:bookiecatchinputforsell', function(qty) --makes event have code to run and recieves the qty varibale from menusetup lua
   TriggerClientEvent('hd_bookie:betplaced', source, qty) --triggers client event and passes the qty variable to it
 end)
 
---Cooldown setups
+--[[#########################Cooldown Setup#################################]]
 --This is the variables used to create cooldowns for each bookie
 local valcdown = false
 local bwcdown = false
 local annesburgcdown = false
 local armadillocdown = false
 local sdcdwon = false
-
 RegisterServerEvent('hd_bookie:fightbegin') --creates a server event that checks if you actually have the money you tried to bet if so and its not on cooldown it starts the fight
 AddEventHandler('hd_bookie:fightbegin', function(qty, fighterbeton, table) --makes the event have code to run and catches the 3 variables from the client
   local Character = VORPcore.getUser(source).getUsedCharacter --gets the character used by the player
@@ -87,15 +72,17 @@ AddEventHandler('hd_bookie:fightbegin', function(qty, fighterbeton, table) --mak
   end
 end)
 
---these events handle the adding and removal of cash
+--[[#######################Addition and removal of money####################################]]
 RegisterServerEvent('hd_bookie:fightoveraddmoney')
 AddEventHandler('hd_bookie:fightoveraddmoney', function(qty)
   local Character = VORPcore.getUser(source).getUsedCharacter
   Character.addCurrency(0, qty)
+  VORPcore.AddWebhook(Character.identifier, Config.Webhookling, 'Fighter Player Bet on won Removing Currency Amount ' .. tostring(qty))
 end)
 
 RegisterServerEvent('hd_bookie:fightoverremovemoney')
 AddEventHandler('hd_bookie:fightoverremovemoney', function(qty)
   local Character = VORPcore.getUser(source).getUsedCharacter
   Character.removeCurrency(0, qty)
+  VORPcore.AddWebhook(Character.identifier, Config.Webhookling, 'Fighter Player Bet on lost Removing Currency Amount ' .. tostring(qty))
 end)
