@@ -3,6 +3,8 @@ Config = {}
 --You can not add or remove any tables if you do it will break the script. You can however change the locations just because the location says for example valentine you can change the coords to be somewhere else.
 Config.Webhookling = ''
 
+Config.BookieBlip = true --false if you do not want blips to appear on the bookie
+
 Config.Setup = {
     Val = { --do not remove val
         location = 'val', -- Do not touch

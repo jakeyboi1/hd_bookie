@@ -3,8 +3,10 @@ local pedlock = 0
 Citizen.CreateThread(function()
     local model = GetHashKey('mp_re_slumpedhunter_males_01') --sets the npc model
     for k, v in pairs(Config.Setup) do
-        local blip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.Bookielocation.x, v.Bookielocation.y, v.Bookielocation.z)
-        Citizen.InvokeNative(0x9CB1A1623062F402, blip, "Bookie")
+        if Config.BookieBlip == true then
+            local blip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.Bookielocation.x, v.Bookielocation.y, v.Bookielocation.z)
+            Citizen.InvokeNative(0x9CB1A1623062F402, blip, "Bookie")
+        end
         RequestModel(model) -- requests the varible model
         if not HasModelLoaded(model) then --checks if its loaded
             RequestModel(model)
