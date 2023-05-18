@@ -1,15 +1,9 @@
-local VORPcore = {}
-
-TriggerEvent("getCore", function(core)
-    VORPcore = core
-end)
-
---Menu Setup
-Citizen.CreateThread(function()
-    WarMenu.CreateMenu('hd_bookie:book', "Bookie") --creates the main menu
-    repeat --repeates until it ends/breaks
-        if WarMenu.IsMenuOpened('hd_bookie:book') then --if the menu is opened then
-            if WarMenu.Button(' Bet on fighter A? ') then --creates the spawnbutton
+------ Menu Setup ---------
+CreateThread(function()
+    WarMenu.CreateMenu('hd_bookie:book', "Bookie")
+    repeat
+        if WarMenu.IsMenuOpened('hd_bookie:book') then
+            if WarMenu.Button(' Bet on fighter A? ') then
                 Fighterbetonn = 'fightera'
                 local myInput = {
                     type = "enableinput", -- dont touch
@@ -61,8 +55,8 @@ Citizen.CreateThread(function()
                 WarMenu.CloseMenu()
             end
         end
-    WarMenu.Display()
-    Citizen.Wait(0)
+        WarMenu.Display()
+        Wait(0)
     until false
 end)
 
@@ -73,9 +67,9 @@ AddEventHandler('hd_bookie:betplaced', function(qty)
     TriggerServerEvent('hd_bookie:fightbegin', qty, fighterbeton, table)
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(10)
+        Wait(5)
         for k, v in pairs(Config.Setup) do
             if GetDistanceBetweenCoords(v.Bookielocation.x, v.Bookielocation.y, v.Bookielocation.z, GetEntityCoords(PlayerPedId()), false) < 2 then
                 if IsControlJustReleased(0, 0x760A9C6F) then
@@ -86,4 +80,3 @@ Citizen.CreateThread(function()
         end
     end
 end)
---End menu setup

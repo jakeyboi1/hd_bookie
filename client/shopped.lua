@@ -1,41 +1,31 @@
---[[##########################Handles spawning of the bookie#######################################]]
-local pedlock = 0
-Citizen.CreateThread(function()
-    local model = GetHashKey('mp_re_slumpedhunter_males_01') --sets the npc model
+------------ Ped Spawning ----------
+CreateThread(function()
+    local model = joaat('mp_re_slumpedhunter_males_01')
     for k, v in pairs(Config.Setup) do
-        if Config.BookieBlip == true then
+        if Config.BookieBlip then
             local blip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.Bookielocation.x, v.Bookielocation.y, v.Bookielocation.z)
             Citizen.InvokeNative(0x9CB1A1623062F402, blip, "Bookie")
         end
-        RequestModel(model) -- requests the varible model
-        if not HasModelLoaded(model) then --checks if its loaded
-            RequestModel(model)
+        RequestModel(model)
+        while not HasModelLoaded(model) do
+            Wait(100)
         end
-        while not HasModelLoaded(model) or HasModelLoaded(model) == 0 or model == 1 do -- not sure but its needed
-            Citizen.Wait(1)
-        end
-        if pedlock == 0 then
-            local createdped = CreatePed(model, v.Bookielocation.x, v.Bookielocation.y, v.Bookielocation.z - 1, v.Bookieheading, false, true, true, true) --creates ped the minus one makes it so its standing on the ground not floating
-            Citizen.InvokeNative(0x283978A15512B2FE, createdped, true) -- sets ped into random outfit, stops it being invis
-            SetEntityAsMissionEntity(createdped, true, true) -- sets ped as mission entity preventing it from despawning
-            SetEntityInvincible(createdped, true) --sets ped invincible
-            FreezeEntityPosition(createdped, true) --freezes the entity
-        end
+        local createdped = CreatePed(model, v.Bookielocation.x, v.Bookielocation.y, v.Bookielocation.z - 1, v.Bookieheading, false, false, false, false)
+        Citizen.InvokeNative(0x283978A15512B2FE, createdped, true)
+        SetEntityAsMissionEntity(createdped, true, true)
+        SetEntityInvincible(createdped, true)
+        FreezeEntityPosition(createdped, true)
     end
-    pedlock = pedlock + 1
 end)
 
---[[#####################Creates Text on Ped/Sets up drawtext3d#################################]]
---Creates the text on ped
-Citizen.CreateThread(function()
-    while true do -- creates a loop to keep the text up and the distance constantly checked
-        Citizen.Wait(0) --makes it wait a slight amount (avoids crashing is needed)
+----------- Draw Text On Peds ----------
+CreateThread(function()
+    while true do
+        Wait(2)
         for k, v in pairs(Config.Setup) do
-            local player = PlayerPedId() --gets the players ped
-            local playercoord = GetEntityCoords(player) --gets the players ped coordinates
-            local dist = GetDistanceBetweenCoords(playercoord.x, playercoord.y, playercoord.z, v.Bookielocation.x, v.Bookielocation.y, v.Bookielocation.z, false) --gets the distance between coords
-            if dist < 10 then -- if distance is less than 10 do
-                DrawText3D(v.Bookielocation.x, v.Bookielocation.y, v.Bookielocation.z, "Press 'g' to bet on fights") --creates the text
+            local playercoord = GetEntityCoords(PlayerPedId())
+            if GetDistanceBetweenCoords(playercoord.x, playercoord.y, playercoord.z, v.Bookielocation.x, v.Bookielocation.y, v.Bookielocation.z, true) < 10 then
+                DrawText3D(v.Bookielocation.x, v.Bookielocation.y, v.Bookielocation.z, "Press 'g' to bet on fights")
             end
         end
     end
