@@ -25,7 +25,7 @@ AddEventHandler('hd_bookie:fightbegin', function(qty, fighterbeton, table)
         Wait(table.cooldown)
         valcdown = false
       else
-        TriggerClientEvent('hd_bookie:bookiecdown', _source)
+        VORPcore.NotifyBottomRight(_source, 'You have to wait, a fight has recently occured!', 4000)
       end
     elseif table.location == 'bw' then
       if not bwcdown then
@@ -34,7 +34,7 @@ AddEventHandler('hd_bookie:fightbegin', function(qty, fighterbeton, table)
         Wait(table.cooldown)
         valcdown = false
       else
-        TriggerClientEvent('hd_bookie:bookiecdown', _source)
+        VORPcore.NotifyBottomRight(_source, 'You have to wait, a fight has recently occured!', 4000)
       end
     elseif table.location == 'sd' then
       if not sdcdwon then
@@ -43,7 +43,7 @@ AddEventHandler('hd_bookie:fightbegin', function(qty, fighterbeton, table)
         Wait(table.cooldown)
         sdcdwon = false
       else
-        TriggerClientEvent('hd_bookie:bookiecdown', _source)
+        VORPcore.NotifyBottomRight(_source, 'You have to wait, a fight has recently occured!', 4000)
       end
     elseif table.location == 'armadillo' then
       if not armadillocdown then
@@ -52,7 +52,7 @@ AddEventHandler('hd_bookie:fightbegin', function(qty, fighterbeton, table)
         Wait(table.cooldown)
         armadillocdown = false
       else
-        TriggerClientEvent('hd_bookie:bookiecdown', _source)
+        VORPcore.NotifyBottomRight(_source, 'You have to wait, a fight has recently occured!', 4000)
       end
     elseif table.location == 'annesburg' then
       if not annesburgcdown then
@@ -61,11 +61,11 @@ AddEventHandler('hd_bookie:fightbegin', function(qty, fighterbeton, table)
         Wait(table.cooldown)
         annesburgcdown = false
       else
-        TriggerClientEvent('hd_bookie:bookiecdown', _source)
+        VORPcore.NotifyBottomRight(_source, 'You have to wait, a fight has recently occured!', 4000)
       end
     end
   elseif Character.money < qty then
-    TriggerClientEvent('hd_bookie:notenoughcash', _source)
+    VORPcore.NotifyBottomRight(_source, 'You do not have enough cash for the bet!', 4000)
   end
 end)
 

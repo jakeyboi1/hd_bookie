@@ -21,7 +21,7 @@ end)
 ----------- Draw Text On Peds ----------
 CreateThread(function()
     while true do
-        Wait(2)
+        Wait(5)
         for k, v in pairs(Config.Setup) do
             local playercoord = GetEntityCoords(PlayerPedId())
             if GetDistanceBetweenCoords(playercoord.x, playercoord.y, playercoord.z, v.Bookielocation.x, v.Bookielocation.y, v.Bookielocation.z, true) < 10 then
