@@ -31,7 +31,7 @@ AddEventHandler('hd_bookie:fightstartt', function(qty, fighterbeton)
         Wait(5)
         if fighterbeton == 'fightera' then
             if dead then
-                if cded == -1569615261 and GetPedSourceOfDeath(Createdped2) == 528642 then --this hash is the one for melee combat so if ped died to melee then
+                if cded == -1569615261 and GetPedSourceOfDeath(Createdped2) ~= 528642 then --this hash is the one for melee combat so if ped died to melee then
                     Wait(2000)
                     DeletePed(Createdped2)
                     DeletePed(Createdped3)
@@ -43,7 +43,7 @@ AddEventHandler('hd_bookie:fightstartt', function(qty, fighterbeton)
                     VORPcore.NotifyBottomRight('Something has interuppted the fight!', 4000) break
                 end
             elseif dead2 then
-                if cded2 == -1569615261 and GetPedSourceOfDeath(Createdped3) == 528642 then
+                if cded2 == -1569615261 and GetPedSourceOfDeath(Createdped3) ~= 528642 then
                     Wait(1500)
                     DeletePed(Createdped2)
                     DeletePed(Createdped3)
@@ -57,7 +57,7 @@ AddEventHandler('hd_bookie:fightstartt', function(qty, fighterbeton)
             end
         elseif fighterbeton == 'fighterb' then
             if dead2 then
-                if cded2 == -1569615261 and GetPedSourceOfDeath(Createdped3) == 528642 then
+                if cded2 == -1569615261 and GetPedSourceOfDeath(Createdped3) ~= 528642 then
                     Wait(2000)
                     DeletePed(Createdped2)
                     DeletePed(Createdped3)
@@ -69,7 +69,7 @@ AddEventHandler('hd_bookie:fightstartt', function(qty, fighterbeton)
                     VORPcore.NotifyBottomRight('Something has interuppted the fight!', 4000) break
                 end
             elseif dead then
-                if cded == -1569615261 and GetPedSourceOfDeath(Createdped2) == 528642 then
+                if cded == -1569615261 and GetPedSourceOfDeath(Createdped2) ~= 528642 then
                     Wait(1500)
                     DeletePed(Createdped2)
                     DeletePed(Createdped3)
