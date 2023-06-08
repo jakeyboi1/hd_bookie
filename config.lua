@@ -16,16 +16,6 @@ Config.Setup = {
         },
         cooldown = 60000, --this is the cooldown between fights in ms
     },
-    BW = {
-        location = 'bw', -- Do not touch
-        Bookielocation = {x = -968.53, y = -1199.67, z = 58.03},
-        Bookieheading = 175.87,
-        Fightersspawn = {
-            FighterA = {x = -957.91, y = -1193.95, z = 56.54},
-            FighterB = {x = -954.75, y = -1193.45, z = 56.0},
-        },
-        cooldown = 60000,
-    },
     SD = {
         location = 'sd', -- Do not touch
         Bookielocation = {x = 2145.85, y = -1279.18, z = 43.46},
@@ -36,23 +26,33 @@ Config.Setup = {
         },
         cooldown = 60000,
     },
-    Armadillo = {
-        location = 'armadillo', -- Do not touch
-        Bookielocation = {x = -3675.6, y = -2550.36, z = -13.66},
-        Bookieheading = 165.06,
+    TL = {
+        location = 'tl', -- Do not touch
+        Bookielocation = {x = -1414.28, y = -2212.16, z = 43.24},
+        Bookieheading = 177.25,
         Fightersspawn = {
-            FighterA = {x = -3676.17, y = -2547.32, z = -13.75},
-            FighterB = {x = -3680.27, y = -2547.12, z = -13.77},
+            FighterA = {x = -1410.31, y = -2204.65, z = 43.31},
+            FighterB = {x = -1411.31, y = -2207.65, z = 43.31},
         },
         cooldown = 60000,
     },
-    Annesburg = {
-        location = 'annesburg', -- Do not touch
-        Bookielocation = {x = 2947.84, y = 1425.5, z = 45.47},
-        Bookieheading = 216.66,
+    VH = {
+        location = 'vh', -- Do not touch
+        Bookielocation = {x = 2953.09, y = 595.26, z = 44.37},
+        Bookieheading = 157.78,
         Fightersspawn = {
-            FighterA = {x = 2945.85, y = 1419.21, z = 44.66},
-            FighterB = {x = 2943.34, y = 1415.08, z = 44.76},
+            FighterA = {x = 2958.66, y = 597.03, z = 44.37},
+            FighterB = {x = 2957.66, y = 600.03, z = 44.37},
+        },
+        cooldown = 60000,
+    },
+    TW = {
+        location = 'tw', -- Do not touch
+        Bookielocation = {x = -5487.71, y = -2985.51, z = -1.54},
+        Bookieheading = 150.24,
+        Fightersspawn = {
+            FighterA = {x = -5479.93, y = -2991.62, z = -5.14},
+            FighterB = {x = -5481.93, y = -2989.62, z = -5.14},
         },
         cooldown = 60000,
     },

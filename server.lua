@@ -27,39 +27,39 @@ AddEventHandler('hd_bookie:fightbegin', function(qty, fighterbeton, table)
       else
         VORPcore.NotifyBottomRight(_source, 'You have to wait, a fight has recently occured!', 4000)
       end
-    elseif table.location == 'bw' then
-      if not bwcdown then
-        bwcdown = true
-        TriggerClientEvent('hd_bookie:fightstartt', _source, qty, fighterbeton, table)
-        Wait(table.cooldown)
-        valcdown = false
-      else
-        VORPcore.NotifyBottomRight(_source, 'You have to wait, a fight has recently occured!', 4000)
-      end
     elseif table.location == 'sd' then
-      if not sdcdwon then
-        sdcdwon = true
+      if not sdcdown then
+        sdcdown = true
         TriggerClientEvent('hd_bookie:fightstartt', _source, qty, fighterbeton, table)
         Wait(table.cooldown)
-        sdcdwon = false
+        sdcdown = false
       else
         VORPcore.NotifyBottomRight(_source, 'You have to wait, a fight has recently occured!', 4000)
       end
-    elseif table.location == 'armadillo' then
-      if not armadillocdown then
-        armadillocdown = true
+    elseif table.location == 'tl' then
+      if not tlcdwon then
+        tlcdwon = true
         TriggerClientEvent('hd_bookie:fightstartt', _source, qty, fighterbeton, table)
         Wait(table.cooldown)
-        armadillocdown = false
+        tlcdwon = false
       else
         VORPcore.NotifyBottomRight(_source, 'You have to wait, a fight has recently occured!', 4000)
       end
-    elseif table.location == 'annesburg' then
-      if not annesburgcdown then
-        annesburgcdown = true
+    elseif table.location == 'vh' then
+      if not vhcdown then
+        vhcdown = true
         TriggerClientEvent('hd_bookie:fightstartt', _source, qty, fighterbeton, table)
         Wait(table.cooldown)
-        annesburgcdown = false
+        vhcdown = false
+      else
+        VORPcore.NotifyBottomRight(_source, 'You have to wait, a fight has recently occured!', 4000)
+      end
+   elseif table.location == 'tw' then
+      if not twcdown then
+        twcdown = true
+        TriggerClientEvent('hd_bookie:fightstartt', _source, qty, fighterbeton, table)
+        Wait(table.cooldown)
+        twcdown = false
       else
         VORPcore.NotifyBottomRight(_source, 'You have to wait, a fight has recently occured!', 4000)
       end
